@@ -16,7 +16,6 @@ import java.util.List;
 @RequestMapping("/books")
 public class BookController {
 
-
   private final com.example.demo.BookService.BookService bookService;
 
   @Autowired // Dep injection, auto instantiate a class for us without us having to say to create a class
@@ -24,32 +23,42 @@ public class BookController {
     this.bookService = bookService;
   }
 
+  // TODO
   // Post a book to the server, return a book object
+  // @auth private
   @PostMapping(consumes = "application/json", produces = "application/json")
   public List<Book> postBook(@RequestBody Book book) {
     System.out.println(book);
     return bookService.postBook(book);
   }
 
-  //TODO
+  // TODO
   // Get all books
+  // @auth public
   @GetMapping
   public java.util.List<Book> getBooks() {
     return bookService.getBooks();
   }
 
-  //TODO
+  // TODO
   // Get book by id
+  // @auth public
   @GetMapping(value = "/{id}")
   public Book getBookById(@PathVariable int id) {
+    // find and Get book
+    // no Book? return responsestatusExeption
     return bookService.getBookById(id);
   }
 
 
   //TODO
   // Update a book
+  // @auth private
   @PutMapping
   public Book updateBook() {
+    // get book id,
+    // get user update input
+    // update input
     return new Book();
   }
 
